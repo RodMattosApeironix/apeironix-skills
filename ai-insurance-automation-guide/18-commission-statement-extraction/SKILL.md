@@ -172,6 +172,7 @@ If the source is incomplete or unreadable, identify the limitation.
 The following information materially improves extraction and reconciliation:
 
 - Carrier name
+- Billing company name
 - Statement date
 - Statement period
 - Agency name
