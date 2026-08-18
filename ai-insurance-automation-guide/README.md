@@ -208,11 +208,11 @@ Each Skill will retain the intent of the original prompt while expanding it into
 
 ### Skills
 
-1. **Skill 01 — [TITLE PLACEHOLDER]**
-2. **Skill 02 — [TITLE PLACEHOLDER]**
-3. **Skill 03 — [TITLE PLACEHOLDER]**
-4. **Skill 04 — [TITLE PLACEHOLDER]**
-5. **Skill 05 — [TITLE PLACEHOLDER]**
+1. [Commercial Prospect Intelligence Brief](./01-prospect-intelligence-brief/SKILL.md)
+2. [Commercial Insurance Meeting Strategy Builder](./02-meeting-strategy-builder/SKILL.md)
+3. [Commercial Insurance Coverage Gap Analysis](./03-coverage-gap-analysis/SKILL.md)
+4. [Commercial Insurance Renewal Strategy Builder](./04-renewal-strategy-builder/SKILL.md)
+5. [Commercial Insurance Post-Meeting Follow-Up](./05-post-meeting-follow-up/SKILL.md)
 6. **Skill 06 — [TITLE PLACEHOLDER]**
 7. **Skill 07 — [TITLE PLACEHOLDER]**
 8. **Skill 08 — [TITLE PLACEHOLDER]**
