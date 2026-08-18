@@ -12,6 +12,22 @@ Our goal is simple:
 
 ---
 
+## Collections
+
+### AI Insurance Automation Guide
+
+21 foundational insurance AI Skills built from the original Apeironix AI Insurance Automation Guide.
+
+[Explore the foundational Skills](./ai-insurance-automation-guide/README.md)
+
+### Insurance AI Advantage System
+
+A growing collection of fully engineered Signature Skills designed for connected insurance workflows, AI Teammates, and AI Workforce orchestration.
+
+[Explore the Insurance AI Advantage System](./insurance-ai-advantage-system/README.md)
+
+---
+
 ## Skills Library
 
 We are building Skills across:
@@ -51,11 +67,15 @@ Most Skills are stored as `SKILL.md` files inside a dedicated workflow folder.
 
 ## Repository Structure
 
-```text
-apeironix-skills/
+Root
 │
-├── commercial-pc/
-├── employee-benefits/
-├── personal-lines/
-├── agency-operations/
-└── templates/
+├── Foundational Library
+│   └── AI Insurance Automation Guide
+│       └── Skills 01–21
+│
+└── Insurance AI Advantage System
+    └── Signature Skills
+        ├── Signature Skill 01
+        ├── Signature Skill 02
+        ├── Signature Skill 03
+        └── ...
