@@ -1,290 +1,511 @@
 ---
 name: skill-name
 title: Human-Readable Skill Title
-description: A concise description of what this Skill helps accomplish.
+collection: collection-name
+prompt_number: 0
 category: category-name
+capability: capability-name
+primary_role: primary-user-role
+secondary_roles:
+  - secondary-role
 version: 1.0.0
 maintainer: Apeironix
 license: Apache-2.0
+status: public
+---
+
+# Apeironix Gold Standard Skill Template
+
+## Template Usage Standard
+
+This template defines the publishing standard for public Apeironix Skills.
+
+An Apeironix Skill should be more than a prompt.
+
+It should define a reusable, operationally executable capability that helps an insurance professional, AI assistant, AI agent, or AI Teammate perform a repeatable insurance workflow with greater consistency, structure, and quality.
+
+Every published Skill should be:
+
+- Insurance-specific
+- Practical
+- Operationally executable
+- Clear about required information
+- Explicit about assumptions and uncertainty
+- Prioritized by materiality
+- Structured around real insurance workflows
+- Designed for human accountability
+- Free from fabricated insurance or client information
+- Reusable across humans, AI assistants, agents, and AI Teammates
+
+Not every section below will apply equally to every Skill.
+
+Use the sections that materially improve execution.
+
+Do not include a section merely because it appears in the template.
+
+However, every Skill should address the core areas of:
+
+1. Purpose
+2. Inputs
+3. Workflow
+4. Decision rules
+5. Output requirements
+6. Quality control
+7. Guardrails
+8. Human accountability
+
 ---
 
 # Skill Title
 
-## Purpose
+Replace this heading with the final public Skill title.
+
+Example:
+
+# Commercial Insurance Coverage Gap Analysis
+
+---
+
+# Purpose
 
 Clearly explain what this Skill is designed to accomplish.
 
-Describe the business problem or insurance workflow it addresses and the value it should create for the user.
+Describe:
 
-This section should answer:
+- The insurance workflow
+- The business problem
+- The intended user
+- The desired outcome
+- The value the Skill should create
 
-- What does this Skill do?
-- Who is it designed for?
-- What business outcome should it produce?
+The purpose should answer:
 
----
+> What does this Skill enable an insurance professional or AI Teammate to do better?
 
-## Best Used For
+Avoid generic descriptions.
 
-Use this Skill when the user needs help with:
+Prefer:
 
-- [Use case 1]
-- [Use case 2]
-- [Use case 3]
-- [Use case 4]
+> Evaluate an existing commercial insurance program to identify material coverage gaps, structural weaknesses, inadequate limits, exclusions, and operational exposures.
 
-Do not use this Skill when:
+Avoid:
 
-- [Out-of-scope situation 1]
-- [Out-of-scope situation 2]
-- [Situation requiring another Skill, licensed professional, carrier, legal counsel, etc.]
+> Help analyze insurance.
 
 ---
 
-## Intended Users
+# Core Outcome
 
-This Skill may be useful for:
+Describe what a successful use of the Skill should enable the user to understand, decide, prepare, or produce.
 
-- Insurance Producers
-- Account Managers
+Use practical questions where helpful.
+
+Example:
+
+A successful use of this Skill should allow the user to answer:
+
+- What is the most important issue?
+- What information is missing?
+- What requires professional judgment?
+- What should happen next?
+
+The user should finish with a clear outcome, not merely more information.
+
+---
+
+# Best Used For
+
+List the situations in which the Skill should be used.
+
+Examples:
+
+- Prospect preparation
+- Policy review
+- Renewal preparation
+- Coverage analysis
+- Meeting strategy
+- Submission preparation
+- Client communication
+- Claims review
+- Account management
+- Cross-sell analysis
+
+Be specific.
+
+---
+
+# Do Not Use This Skill As
+
+Define important boundaries.
+
+Examples:
+
+This Skill is not a substitute for:
+
+- Legal advice
+- Binding authority
+- Carrier underwriting decisions
+- Formal policy interpretation
+- Claim-coverage determinations
+- Regulatory opinions
+- Verified client discovery
+
+This section should prevent misuse without making the Skill overly cautious.
+
+---
+
+# Intended Users
+
+Identify the primary and secondary users.
+
+Examples:
+
+- Commercial Insurance Producers
+- Employee Benefits Advisors
 - Account Executives
-- Client Service Professionals
+- Account Managers
+- Coverage Analysts
+- Risk Advisors
 - Agency Operations Teams
-- Insurance Analysts
+- Claims Advocates
 - Other authorized insurance professionals
 
-Modify this list based on the specific Skill.
+Only include roles that reasonably use the Skill.
 
 ---
 
-## Required Inputs
+# Required Inputs
 
-Before beginning, obtain the information required to complete the workflow.
+Identify the minimum information required to perform the Skill.
 
-Required inputs may include:
+Use numbered items when appropriate.
 
-1. [Required input]
-2. [Required input]
-3. [Required input]
-4. [Required input]
+Example:
 
-If a required input is missing, identify what is missing before completing any analysis that depends on it.
+1. Company Name
+2. Industry
+3. Primary Location
 
-Do not invent missing insurance information.
+Recommended input format:
+
+```text
+Company Name: [INSERT]
+Industry: [INSERT]
+Location: [INSERT]
+```
+
+If a required input is missing, instruct the Skill to:
+
+- Identify what is missing
+- Avoid inventing the information
+- Request the missing information when necessary
+- Proceed only where a partial analysis remains useful
 
 ---
 
-## Optional Inputs
+# Recommended Inputs
 
-The following information may improve the quality of the result:
+Identify information that materially improves the quality of the result but is not always mandatory.
 
-- [Optional input]
-- [Optional input]
-- [Optional input]
-- [Optional input]
+Examples may include:
 
-If optional information is unavailable, proceed when the required inputs are sufficient.
+- Revenue
+- Employee count
+- Payroll
+- Locations
+- Current policies
+- Loss runs
+- Renewal date
+- Vehicle count
+- Customer types
+- Contracts
+- Company website
+- Claims history
+- Known client concerns
+
+This section should help users provide better context without creating unnecessary barriers.
 
 ---
 
-## Source Hierarchy
+# Optional Intelligence Sources
 
-When multiple sources of information are available, prioritize them according to the needs of this Skill.
+Use this section for research-oriented Skills.
 
-Typical hierarchy:
+Potential sources may include:
 
-1. Current policy, quote, proposal, schedule, or carrier document
-2. Official carrier-issued information
-3. Agency Management System or CRM data
+- Official company website
+- Company About page
+- Public filings
+- Regulatory records
+- Industry associations
+- Public job postings
+- News coverage
+- Trade publications
+- Reliable business databases
+- Public permit information
+- Public transportation information
+- Other credible public sources
+
+Only include sources relevant to the Skill.
+
+Do not encourage unnecessary collection of sensitive or irrelevant information.
+
+---
+
+# Preferred Source Documents
+
+Use this section for document-driven Skills.
+
+Example hierarchy:
+
+1. Full current policy
+2. Current endorsements
+3. Current declarations
+4. Current schedules
+5. Current proposal
+6. Agency Management System data
+7. Client-provided summary
+8. Historical documents
+
+Use this section instead of Optional Intelligence Sources when the Skill primarily analyzes files or policy documents.
+
+---
+
+# Research Standard
+
+Use this section when the Skill requires external research.
+
+Explain:
+
+- How deeply the AI should research
+- What it should look for
+- What constitutes sufficient research
+- What should not be inferred without evidence
+
+Example:
+
+> Do not stop after locating a company description. Research enough to understand how the business operates, what assets it relies on, where revenue is generated, and what could materially interrupt operations.
+
+The purpose of research should always connect back to the insurance workflow.
+
+---
+
+# Context Interpretation Standard
+
+Use this section when the Skill works primarily from notes, CRM entries, emails, or unstructured context.
+
+Distinguish between categories such as:
+
+## Known Fact
+
+Information explicitly stated.
+
+## User or Producer Observation
+
+An interpretation expressed by a human.
+
+## Reasonable Inference
+
+A likely conclusion based on context or industry norms.
+
+## Open Question
+
+An unresolved issue requiring discovery.
+
+Do not collapse these categories.
+
+---
+
+# Source Hierarchy
+
+When multiple sources are available, define which should take priority.
+
+Example:
+
+1. Current policy forms and endorsements
+2. Carrier-issued documents
+3. Agency-verified information
 4. Client-provided information
-5. Prior policy or historical documentation
-6. Other supporting information
+5. Public authoritative sources
+6. Industry norms and inference
 
 When sources conflict:
 
-- Identify the discrepancy.
-- Do not silently choose one value.
-- State which source was used and why.
-- Flag material discrepancies for human review.
+- Identify the discrepancy
+- Do not silently choose one
+- Use the most authoritative source available
+- Flag material conflicts for human review
+
+---
+
+# Evidence Classification
+
+Where useful, classify findings.
+
+Suggested categories:
+
+## Verified Fact
+
+Directly supported by a credible source.
+
+## Documented Finding
+
+Supported by supplied policy or account information.
+
+## Reasonable Industry Inference
+
+Based on common industry practices or exposure patterns.
+
+## Discovery Hypothesis
+
+A possible issue worth investigating.
+
+## Exposure-Dependent Concern
+
+A concern that matters only if a specific operational fact is confirmed.
+
+## Requires Form Review
+
+An issue that cannot be resolved without reviewing actual policy language.
+
+Use only the classifications relevant to the Skill.
+
+---
+
+# Confidence Classification
+
+Where useful, classify conclusions:
+
+### High Confidence
+
+Supported by direct, current, or authoritative information.
+
+### Moderate Confidence
+
+Supported by multiple indicators or strong industry norms.
+
+### Low Confidence
+
+Possible but requires meaningful confirmation.
+
+Do not create false precision.
+
+---
+
+# Core Principle
+
+Define the most important operating principle of the Skill.
+
+Examples:
+
+## Never Convert an Inference Into a Fact
+
+or:
+
+## Identify Real Exposure, Not Theoretical Defects
+
+or:
+
+## Every Meeting Needs a Defined Outcome
+
+This principle should guide the AI when there is ambiguity.
 
 ---
 
 # Workflow
 
-Follow the workflow in order unless the specific circumstances require a documented exception.
+Follow the workflow in order unless the specific circumstances clearly justify another sequence.
 
-## Step 1 — Review the Request
+Build enough steps to make the Skill operationally useful.
 
-Determine:
+Avoid vague instructions such as:
 
-- What the user is asking for
-- Which client/account/policy is involved
-- Which lines of coverage or business are relevant
-- The desired output
-- Whether sufficient information has been provided
+> Analyze the information.
+
+Instead define what analysis means.
 
 ---
 
-## Step 2 — Validate Inputs
+## Step 1 — [Step Name]
 
-Confirm that the required documents and data are present.
+Explain:
 
-Check for:
-
-- Correct named insured
-- Correct policy or quote period
-- Correct carrier
-- Correct line of coverage
-- Complete document set
-- Relevant schedules, endorsements, or supporting information
-
-Flag missing or potentially outdated information.
+- What to review
+- What to identify
+- What to distinguish
+- What questions to ask internally
+- What should be produced
 
 ---
 
-## Step 3 — Extract Relevant Information
+## Step 2 — [Step Name]
 
-Identify and organize the information needed for the workflow.
-
-Use structured categories whenever possible.
-
-Examples may include:
-
-- Named insured
-- Carrier
-- Policy number
-- Effective dates
-- Limits
-- Deductibles
-- Premium
-- Locations
-- Vehicles
-- Payroll
-- Class codes
-- Covered employees
-- Plan provisions
-- Endorsements
-- Exclusions
-- Conditions
-- Other workflow-specific information
-
-Do not infer a value merely because it would normally be expected.
+[Instructions]
 
 ---
 
-## Step 4 — Perform the Analysis
+## Step 3 — [Step Name]
 
-Apply the insurance-specific logic defined for this Skill.
-
-Evaluate the information objectively and consistently.
-
-Where relevant:
-
-- Compare current and proposed terms
-- Identify material changes
-- Identify gaps
-- Identify improvements
-- Identify restrictions
-- Identify potential client impact
-- Distinguish factual findings from professional judgment
+[Instructions]
 
 ---
 
-## Step 5 — Identify Exceptions and Issues
+## Step 4 — [Step Name]
 
-Flag anything requiring additional attention.
+[Instructions]
+
+---
+
+## Step 5 — [Step Name]
+
+[Instructions]
+
+---
+
+# Optional Workflow Modules
+
+Add additional modules when the workflow requires them.
 
 Examples:
 
-- Missing information
-- Conflicting information
-- Material coverage reduction
-- Unusual exclusions
-- Significant premium changes
-- Unclear policy language
-- Regulatory considerations
-- Carrier-specific requirements
-- Items requiring producer or Account Manager judgment
+- Exposure mapping
+- Property analysis
+- Business-income analysis
+- Contractual risk review
+- Cyber analysis
+- Claims review
+- Frequency/severity analysis
+- Underwriter perspective
+- Meeting strategy
+- Wedge identification
+- Program coordination
+- Entity review
+- Market comparison
+- Employee communication
 
-Classify issues when helpful:
-
-### Critical
-Potentially significant client, coverage, compliance, financial, or operational impact.
-
-### Important
-Should be reviewed before a recommendation or final decision.
-
-### Informational
-Useful context but not necessarily decision-changing.
-
----
-
-## Step 6 — Develop the Output
-
-Present findings in the format defined under **Output Requirements**.
-
-Prioritize:
-
-1. Material findings
-2. Client impact
-3. Recommended next steps
-4. Supporting details
-
-Avoid overwhelming the user with information that does not affect the decision.
-
----
-
-## Step 7 — Human Review
-
-Before treating the work as final, identify anything requiring professional review.
-
-The AI supports the insurance professional.
-
-It does not replace:
-
-- Licensed insurance judgment
-- Carrier underwriting authority
-- Legal advice
-- Compliance review
-- Client authorization
-- Binding authority
+Do not force irrelevant modules into a Skill.
 
 ---
 
 # Decision Rules
 
-Apply the following principles throughout the Skill.
+Define the principles the Skill should use when making choices.
 
-## Accuracy Over Completion
-
-Never invent information simply to complete the workflow.
-
-If information is unavailable, state:
-
-**Not provided**
-
-**Not found**
-
-or
-
-**Requires confirmation**
-
-as appropriate.
-
----
+Examples:
 
 ## Materiality Over Volume
 
-Prioritize information that could materially affect:
+Prioritize the issues that could materially affect:
 
 - Coverage
 - Cost
 - Risk
+- Claims
+- Operations
 - Compliance
 - Client decisions
-- Agency operations
 
-Do not treat every difference as equally important.
+Do not create long lists simply for completeness.
 
 ---
 
@@ -292,20 +513,20 @@ Do not treat every difference as equally important.
 
 Clearly distinguish:
 
-### Documented Fact
-Information directly supported by the supplied source material.
+### Fact
+Supported by evidence.
 
 ### Observation
-A meaningful pattern, difference, or issue identified from the information.
+A meaningful pattern or issue.
 
 ### Recommendation
-A suggested action requiring professional judgment.
+A suggested action requiring judgment.
 
 ---
 
 ## No Silent Assumptions
 
-If an assumption is necessary:
+If an assumption is required:
 
 1. State the assumption.
 2. Explain why it is necessary.
@@ -315,70 +536,140 @@ If an assumption is necessary:
 
 ## Current Information Takes Priority
 
-When comparing documents across periods, clearly identify which information is current and which is historical.
+When multiple periods or versions exist, prioritize current information.
 
 Do not present expired information as current.
 
 ---
 
+## Insurance Insight Over Generic Commentary
+
+Connect observations to:
+
+- Exposure
+- Coverage
+- Loss potential
+- Underwriting
+- Risk control
+- Client impact
+
+Avoid generic business commentary.
+
+---
+
+## Severity Before Trivia
+
+Prioritize issues capable of materially affecting:
+
+- Balance sheet
+- Operations
+- Revenue
+- Reputation
+- Claims
+- Insurability
+
+---
+
+# Materiality / Prioritization Framework
+
+Use this section when findings must be ranked.
+
+Potential factors:
+
+| Factor | Question |
+|---|---|
+| Severity | How large could the loss or impact be? |
+| Frequency | How likely is it? |
+| Financial Impact | Could it materially affect the client? |
+| Operational Impact | Could it interrupt operations? |
+| Coverage Certainty | How likely is the program to respond? |
+| Contractual Impact | Could obligations exceed protection? |
+| Urgency | Does this require action now? |
+| Evidence | How strongly is the concern supported? |
+
+Possible priority levels:
+
+### Critical
+
+Potential for severe uninsured or underinsured loss, material coverage failure, or major operational impact.
+
+### High
+
+Meaningful exposure requiring prompt attention.
+
+### Moderate
+
+Important but not immediately threatening.
+
+### Informational
+
+Useful context with limited immediate impact.
+
+Do not rank every issue as Critical or High.
+
+---
+
 # Output Requirements
 
-Unless the user requests another format, provide the result using the following structure.
+Define exactly how the result should be presented.
 
-## Executive Summary
-
-Briefly explain:
-
-- What was reviewed
-- Most important findings
-- Overall impact
-- Immediate action needed, if any
-
----
-
-## Key Findings
-
-Present the most important findings in priority order.
-
-Use concise explanations focused on business or client impact.
-
----
-
-## Detailed Analysis
-
-Use tables where comparison improves understanding.
+Unless the user requests another format, create a predictable structure.
 
 Example:
 
-| Item | Current | Proposed / Comparison | Impact | Review Needed |
-|---|---|---|---|---|
-| [Item] | [Value] | [Value] | [Explanation] | Yes / No |
+# [Skill Output Name]
 
----
+## Snapshot
+
+[Basic identifying information]
+
+## Executive Summary
+
+[Highest-value findings]
+
+## Key Findings
+
+[Prioritized findings]
+
+## Detailed Analysis
+
+[Tables or structured analysis]
 
 ## Issues Requiring Attention
 
-Identify:
-
-- Critical issues
-- Important issues
-- Missing information
-- Items requiring human review
-
----
+[Critical or unresolved issues]
 
 ## Recommended Next Steps
 
-Provide specific actions.
+[Specific actions]
 
-Examples:
+---
 
-1. Confirm [item].
-2. Request [document].
-3. Review [coverage or term].
-4. Discuss [issue] with the client.
-5. Obtain carrier clarification.
-6. Document the final decision.
+# Output Tables
+
+When tables improve clarity, define the exact format.
+
+Example:
+
+| Priority | Concern | Potential Impact | Confidence | Recommended Action |
+|---|---|---|---|---|
+| High | [Issue] | [Impact] | Moderate | [Action] |
+
+Avoid tables when prose communicates the result more effectively.
+
+---
+
+# Assumptions & Items Requiring Confirmation
+
+Use this section whenever meaningful inference is involved.
+
+Suggested format:
+
+| Assumption | Basis | Confidence | Confirmation Needed |
+|---|---|---|---|
+| [Assumption] | [Reason] | High / Moderate / Low | [Action] |
+
+This section should prevent inferred information from being mistaken for verified fact.
 
 ---
 
@@ -386,37 +677,69 @@ Examples:
 
 Before completing the Skill, verify:
 
-- [ ] Correct client/account was reviewed
-- [ ] Correct policy or plan period was used
-- [ ] Required documents were available
-- [ ] Material information was captured
+- [ ] Correct client/account/business was reviewed
+- [ ] Required inputs were available
+- [ ] Current information was prioritized
+- [ ] Facts are supported
+- [ ] Inferences are clearly labeled
 - [ ] No unsupported values were invented
-- [ ] Material differences were identified
-- [ ] Facts and recommendations are clearly distinguished
-- [ ] Missing information is clearly disclosed
-- [ ] Client-impacting issues are prioritized
-- [ ] Output is understandable to the intended insurance professional
-- [ ] Items requiring licensed professional review are identified
+- [ ] Material issues are prioritized
+- [ ] Industry-specific logic was applied
+- [ ] Output follows the required structure
+- [ ] Recommendations are practical
+- [ ] Missing information is disclosed
+- [ ] Human-review items are identified
+- [ ] No binding, legal, or unsupported coverage conclusions are made
+- [ ] The final result prioritizes insight over volume
 
-Add Skill-specific quality checks as needed.
+Add Skill-specific checks as needed.
+
+---
+
+# Failure Conditions
+
+Define what makes the Skill incomplete or unacceptable.
+
+Examples:
+
+The Skill should not be considered complete if:
+
+- Required information is missing and not disclosed
+- Generic commentary replaces insurance-specific analysis
+- Inferences are presented as facts
+- Material risks are ignored
+- Unsupported coverage conclusions are made
+- Policy language is invented
+- Recommendations are not actionable
+- No prioritization is provided when prioritization is required
+- The output does not meaningfully help the intended user
+
+If a failure condition exists, revise before finalizing.
 
 ---
 
 # Guardrails
 
-## Do Not Invent Insurance Information
+## Do Not Fabricate Information
 
-Never fabricate:
+Never invent:
 
 - Coverage
 - Limits
-- Premiums
+- Premium
 - Deductibles
 - Endorsements
 - Exclusions
-- Carrier requirements
+- Claims
+- Revenue
+- Payroll
+- Employee counts
+- Locations
 - Policy provisions
-- Client information
+- Carrier requirements
+- Client facts
+
+unless supported by credible information.
 
 ---
 
@@ -425,42 +748,121 @@ Never fabricate:
 This Skill cannot:
 
 - Bind insurance
+- Issue policies
 - Change coverage
+- Change limits
 - Confirm carrier acceptance
-- Issue a policy
-- Guarantee coverage
-- Guarantee claim payment
+- Confirm underwriting approval
 
 ---
 
-## Do Not Provide Legal Advice
+## Do Not Guarantee Coverage
 
-Identify contractual, regulatory, or legal issues when relevant, but do not present legal conclusions unless the Skill is specifically supported by authorized legal guidance.
+Do not state that:
 
-Recommend appropriate professional review when necessary.
+- A claim is covered
+- A claim is excluded
+- A policy definitely responds
+- A limit is definitely sufficient
+- A carrier will accept a risk
+
+without appropriate authoritative support and human review.
+
+---
+
+## Do Not Treat Summaries as Full Policies
+
+When working from summaries or declarations:
+
+Remember they may omit:
+
+- Definitions
+- Conditions
+- Exclusions
+- Endorsements
+- Sublimits
+- Aggregates
+- Territory
+- Reporting requirements
+- Retroactive dates
+
+When appropriate, state:
+
+> Full policy-form review is required.
+
+---
+
+## No Legal Advice
+
+Legal, contractual, or regulatory issues may be identified.
+
+Do not provide unsupported legal conclusions.
+
+Recommend qualified legal or compliance review when necessary.
 
 ---
 
 ## Protect Confidential Information
 
-Only use client or agency information necessary to perform the requested workflow.
+Use only information necessary to perform the requested workflow.
 
-Do not unnecessarily expose, reproduce, or distribute:
+Do not unnecessarily expose:
 
 - Personally identifiable information
 - Protected health information
-- Financial account information
 - Credentials
+- Financial account information
 - Confidential client records
 - Proprietary agency information
+- Sensitive company information
 
 ---
 
 ## Preserve Human Accountability
 
-The final insurance decision remains with the authorized insurance professional, client, carrier, or other responsible party.
+AI supports the insurance professional.
+
+The authorized professional remains responsible for:
+
+- Final judgment
+- Coverage recommendations
+- Client communication
+- Carrier strategy
+- Submission accuracy
+- Compliance
+- Binding decisions
+- Legal or regulatory escalation
 
 ### Your people make the decisions. Your AI Teammates do the work.
+
+---
+
+# Professional Tone Standard
+
+Define the tone appropriate to the Skill.
+
+Typical Apeironix standard:
+
+- Practical
+- Insurance-specific
+- Analytical
+- Concise
+- Client-centered
+- Commercially aware
+- Non-alarmist
+- Actionable
+
+Avoid:
+
+- Generic clichés
+- Fear-based selling
+- Excessive jargon
+- Unsupported certainty
+- Product dumping
+- Long unprioritized lists
+- Artificially cautious language that obscures the real issue
+
+Write like an experienced insurance professional performing the workflow.
 
 ---
 
@@ -468,41 +870,122 @@ The final insurance decision remains with the authorized insurance professional,
 
 ## Example Request
 
-> [Provide a short example of how a user might invoke this Skill.]
+```text
+[INSERT FICTIONAL EXAMPLE INPUT]
+```
 
-## Example Inputs
+---
 
-- [Input]
-- [Input]
-- [Input]
+## Example Output Excerpt
 
-## Example Output
+Provide a realistic but concise example showing:
 
-Provide a shortened example demonstrating the expected structure and level of analysis.
+- Expected reasoning structure
+- Output format
+- Level of specificity
+- Appropriate use of assumptions
+- Materiality
+- Human-review points
 
 Do not use real confidential client information in public examples.
 
 ---
 
-# Skill-Specific Notes
+# Original Prompt
 
-Add any additional information unique to this workflow, including:
+If the Skill is derived from the Apeironix AI Insurance Automation Guide, preserve the original prompt here.
 
-- Carrier considerations
-- Line-of-business rules
-- State-specific considerations
-- Terminology
-- Known limitations
-- Related Skills
+Example:
+
+> [ORIGINAL PROMPT TEXT]
+
+Preserving the original prompt creates a clear historical connection between:
+
+**Prompt → Skill**
+
+Do not materially rewrite the original prompt in this section.
+
+---
+
+# Evolution From Prompt to Skill
+
+Explain what was added beyond the original prompt.
+
+Potential enhancements include:
+
+- Required inputs
+- Recommended inputs
+- Source hierarchy
+- Evidence classification
+- Confidence classification
+- Research standards
+- Insurance-specific workflow logic
+- Decision rules
+- Prioritization
+- Output standards
+- Quality checks
+- Failure conditions
+- Guardrails
+- Human accountability
+- Example implementation
+
+The purpose is to show how a useful prompt became a reusable insurance capability.
 
 ---
 
 # Related Skills
 
-When applicable:
+List related Apeironix Skills.
 
-- `[related-skill-name](../path-to-related-skill/SKILL.md)`
-- `[related-skill-name](../path-to-related-skill/SKILL.md)`
+Example:
+
+- Commercial Prospect Intelligence Brief
+- Commercial Insurance Meeting Strategy Builder
+- Commercial Coverage Gap Analysis
+- Loss Run Analysis
+- Renewal Preparation
+
+Use direct links when those Skills are published.
+
+Example:
+
+```md
+- [Commercial Prospect Intelligence Brief](../01-prospect-intelligence-brief/SKILL.md)
+```
+
+---
+
+# Suggested Invocation
+
+Provide a user-friendly invocation.
+
+Example:
+
+```text
+Perform a [Skill Name].
+
+Company: [OPTIONAL]
+Industry: [OPTIONAL]
+
+Primary Input:
+[PASTE INFORMATION]
+
+Additional Context:
+[OPTIONAL]
+```
+
+---
+
+# Minimum Viable Invocation
+
+Provide the smallest useful input.
+
+Example:
+
+```text
+Primary Input:
+[PASTE REQUIRED INFORMATION]
+```
 
 ---
 
@@ -510,15 +993,46 @@ When applicable:
 
 ## 1.0.0
 
-- Initial public release.
+Initial public release.
+
+Document major enhancements or changes.
+
+Example:
+
+- Added structured workflow
+- Added evidence classification
+- Added quality controls
+- Added guardrails
+- Added output standards
+
+Future updates should follow semantic versioning where practical.
+
+Examples:
+
+- `1.0.1` — Minor wording or clarification
+- `1.1.0` — Meaningful workflow improvement
+- `2.0.0` — Major structural or behavioral change
 
 ---
 
-## About Apeironix
+# About Apeironix
 
 Apeironix develops AI Teammates and reusable AI Skills designed around real insurance workflows.
 
-Our goal is to give insurance professionals more capacity for judgment, relationships, service, and growth while AI handles more of the repetitive work.
+Our goal is to give insurance professionals more capacity for:
+
+- Judgment
+- Relationships
+- Client service
+- Risk advisory
+- Analysis
+- Growth
+
+while AI handles more of the repetitive work surrounding those responsibilities.
+
+Apeironix is building an AI Operating Layer designed to work alongside the systems insurance agencies already use.
+
+### Your people make the decisions. Your AI Teammates do the work.
 
 **Keep your systems. Activate an AI Workforce.**
 
@@ -526,7 +1040,7 @@ Learn more at [Apeironix.com](https://apeironix.com).
 
 ---
 
-## License
+# License
 
 This Skill is made available under the Apache License 2.0.
 
