@@ -8,7 +8,7 @@ capability: capability-name
 primary_role: primary-user-role
 secondary_roles:
   - secondary-role
-template_version: 2.1
+template_version: 2.2
 version: 1.0.0
 maintainer: Apeironix
 license: Apache-2.0
@@ -19,20 +19,33 @@ status: public
 
 ## Template Version
 
-**Apeironix Gold Standard v2.1**
+**Apeironix Gold Standard v2.2**
 
-This template defines the recommended structure and operating standards for public Apeironix Skills.
+This template defines the recommended architecture and operating standards for public Apeironix Skills.
+
+An Apeironix Skill is more than a prompt.
+
+A prompt tells AI what to do.
+
+A Skill provides a repeatable framework for how the work should be performed.
+
+The Gold Standard is designed to support the progression:
+
+**Prompt → Skill → AI Teammate → AI Workforce**
 
 Not every section or module applies to every Skill.
 
-Include the modules that materially improve:
+Include modules only when they materially improve:
 
 - Accuracy
 - Safety
-- Execution
-- Auditability
 - Decision quality
+- Operational execution
+- Auditability
+- Data integrity
+- Governance
 - Client communication
+- Workflow orchestration
 - Human accountability
 - Reusability
 
@@ -42,26 +55,16 @@ Do not add sections merely for completeness.
 
 # Template Usage Standard
 
-An Apeironix Skill is more than a prompt.
-
-It should define a reusable, operationally executable capability that can be used by:
-
-- Insurance professionals
-- AI assistants
-- AI agents
-- AI Teammates
-- Orchestrated AI Workforces
-
 Every Apeironix Skill should be:
 
 - Insurance-specific
 - Practical
 - Workflow-based
-- Clear about required inputs
+- Explicit about required inputs
 - Explicit about assumptions
 - Explicit about uncertainty
-- Materiality-driven
 - Evidence-aware
+- Materiality-driven
 - Decision-oriented
 - Non-fabricating
 - Human-accountable
@@ -87,25 +90,40 @@ Operational Skills should additionally address, where relevant:
 - Execution readiness
 - Workflow state
 - Ownership
-- Timing
 - Dependencies
+- Timing
+- Handoffs
+- System of record
+- Update cadence
+- Stop rules
 - Completion criteria
 - Escalation
-- Update cadence
+- Audit trail
 
 Analytical Skills should additionally address, where relevant:
 
 - Data integrity
+- Data normalization
 - Calculation integrity
 - Comparison basis
 - Governing authority
 - Evidence classification
-- Confidence
+- Confidence classification
+- Dynamic reassessment
 
-Client-facing Skills should additionally address, where relevant:
+Document-driven Skills should additionally address, where relevant:
+
+- Document completeness
+- Document interaction / override
+- Obligation extraction
+- Effective dates
+- Governing scope
+
+Client-facing or dispute-sensitive Skills should additionally address, where relevant:
 
 - Audience
 - Internal vs. external information boundaries
+- Neutral attribution
 - Plain-language translation
 - Trade-offs
 - Example integrity
@@ -138,7 +156,7 @@ A good Purpose section explains why the Skill exists in a real insurance workflo
 
 # Core Outcome
 
-Describe what a successful execution should accomplish.
+Describe what successful execution should accomplish.
 
 Answer:
 
@@ -146,6 +164,7 @@ Answer:
 - What should the AI produce?
 - What decision should become easier?
 - What workflow should advance?
+- What state should the work reach?
 
 Define success in operational terms.
 
@@ -168,6 +187,10 @@ Examples:
 - Commercial P&C
 - Personal lines
 - Agency operations
+- Accounting
+- Compliance
+- Training
+- Document processing
 
 Keep examples relevant to the Skill.
 
@@ -187,6 +210,8 @@ Examples:
 - Actuarial analysis
 - Final claims determination
 - Formal contract interpretation
+- Financial approval
+- Final compliance approval
 
 This section should prevent misuse without becoming a generic disclaimer block.
 
@@ -205,8 +230,12 @@ Examples:
 - Placement Specialist
 - Benefits Advisor
 - Claims Advocate
+- Claims Analyst
 - Service Specialist
+- Financial Operations Analyst
+- Compliance Specialist
 - Agency Principal
+- Operations Leader
 
 ---
 
@@ -251,6 +280,9 @@ Examples:
 - Client priorities
 - Prior decisions
 - Historical data
+- Workflow status
+- Relevant system record
+- Governing document
 
 ---
 
@@ -269,6 +301,7 @@ Potential sources:
 - Public filings
 - Client systems
 - Agency systems
+- Vendor documentation
 
 Do not use external information merely to create the appearance of depth.
 
@@ -339,9 +372,10 @@ When multiple provisions interact:
 
 1. Identify the base provision
 2. Identify the modifying document
-3. Explain what changed
-4. Explain the practical effect
-5. Flag unresolved conflicts
+3. Identify effective dates
+4. Explain what changed
+5. Explain the practical effect
+6. Flag unresolved conflicts
 
 ---
 
@@ -391,7 +425,7 @@ Current information should be used for claims involving:
 
 Do not present stale information as current.
 
-Historical experience may be used as context, but should not automatically be treated as present-day fact.
+Historical experience may be used as context but should not automatically be treated as present-day fact.
 
 When current validation is unavailable:
 
@@ -421,6 +455,7 @@ Potential authorities include:
 - TPA rules
 - Benefit plan terms
 - Accounting rules
+- Agency agreement
 
 Do not assume that a rule used in one jurisdiction or system applies universally.
 
@@ -436,7 +471,7 @@ Supported directly by authoritative evidence.
 
 ### AI Analysis
 
-A conclusion derived from the available information.
+A conclusion derived from available information.
 
 ### Professional Recommendation
 
@@ -455,6 +490,8 @@ Examples of Decision Authorities may include:
 - Legal counsel
 - Employer
 - Plan administrator
+- Accounting leadership
+- Agency principal
 - Authorized insurance professional
 
 A strong analytical conclusion does not automatically equal authoritative approval.
@@ -470,18 +507,87 @@ Potential classifications:
 - Verified Fact
 - Documented Finding
 - Client-Confirmed Fact
+- Carrier-Confirmed Fact
 - Calculated Observation
 - Market-Supported Observation
 - Professional Inference
 - Recommendation
 - Hypothesis
 - Assumption
+- Reported Allegation
+- Observed Condition
 - Requires Confirmation
 - Requires Authority Review
 
 Use classifications appropriate to the Skill.
 
 Never convert an inference into a fact.
+
+---
+
+# Neutral Narrative / Attribution Standard
+
+**Use when the Skill involves claims, complaints, disputes, incidents, investigations, legal allegations, employee matters, or other fact-sensitive situations.**
+
+Distinguish between:
+
+### Confirmed Fact
+
+Supported by authoritative or reliable evidence.
+
+### Reported Statement
+
+Information supplied by a participant.
+
+Example:
+
+> The insured reports that the vehicle entered the intersection on a green light.
+
+### Allegation
+
+A claim or assertion that has not been independently established.
+
+Example:
+
+> The claimant alleges that the insured driver was speeding.
+
+### Observation
+
+A documented condition without assigning cause.
+
+Example:
+
+> Photos show damage to the passenger-side rear panel.
+
+### Formal Determination
+
+A conclusion made by an authorized party.
+
+Example:
+
+> The carrier has formally denied coverage.
+
+### AI Inference
+
+An analytical conclusion drawn from available information.
+
+Do not convert:
+
+> The claimant alleges...
+
+into:
+
+> The insured did...
+
+Use attribution whenever the source of a disputed fact matters.
+
+Neutral language should preserve the distinction between:
+
+- What happened
+- What someone says happened
+- What has been observed
+- What has been formally determined
+- What the AI believes may be true
 
 ---
 
@@ -598,6 +704,8 @@ Examples:
 
 > Classify the work actually performed.
 
+> Report what is known and identify what is unknown.
+
 The Core Principle should shape the entire workflow.
 
 ---
@@ -674,9 +782,10 @@ Potential states include:
 10. Approved
 11. Processed
 12. Documentation Received
-13. Completed
-14. Escalated
-15. Unable to Complete
+13. Quality Check
+14. Completed
+15. Escalated
+16. Unable to Complete
 
 Do not confuse:
 
@@ -699,6 +808,9 @@ Each step should answer:
 - What should be done?
 - Why does it matter?
 - What evidence is needed?
+- Who owns it?
+- What system is used?
+- What output should result?
 - What decision follows?
 
 Avoid vague workflow steps such as:
@@ -727,7 +839,9 @@ Potential modules:
 - Negotiation
 - Escalation
 - Follow-up
+- Reconciliation
 - Quality control
+- Monitoring
 
 ---
 
@@ -806,6 +920,61 @@ rather than:
 > Location A represents 42% of the company's total property exposure.
 
 unless completeness is known.
+
+---
+
+# Transaction Lineage / Audit Trail Standard
+
+**Use when the Skill processes financial, policy, claims, eligibility, accounting, or other transactional records.**
+
+Preserve the relationship between:
+
+1. Source record
+2. Extracted record
+3. Normalized record
+4. Derived calculation
+5. Adjustment or correction
+6. Reversal
+7. Approval
+8. Final posted or processed record
+
+Do not output only the final result when the transaction history materially affects auditability.
+
+Where applicable, retain:
+
+- Source identifier
+- Source document
+- Transaction ID
+- Original value
+- Normalized value
+- Change reason
+- Calculation method
+- Correction reference
+- Reversal reference
+- Approval status
+- Posting status
+- Timestamp
+- System of record
+
+Example:
+
+```text
+Original Carrier Transaction
+    ↓
+Normalized Commission Record
+    ↓
+Producer Split Calculation
+    ↓
+Accounting Review
+    ↓
+Approved Posting
+```
+
+A correction should not erase the existence of the original transaction.
+
+A reversal should remain linked to the transaction it reverses.
+
+AI-generated transformation should be traceable back to source.
 
 ---
 
@@ -906,6 +1075,41 @@ A trusted advisor explains both sides.
 
 ---
 
+# Obligation Extraction Standard
+
+**Use when a document, policy, contract, carrier instruction, regulation, SOP, or workflow creates duties or requirements.**
+
+For every material obligation, identify:
+
+1. **What must be done**
+2. **Who must do it**
+3. **By when**
+4. **What triggers the obligation**
+5. **What evidence demonstrates completion**
+6. **What governing source creates the obligation**
+7. **What consequence is stated for noncompliance**
+8. **What remains unclear**
+
+Recommended structure:
+
+| Obligation | Owner | Trigger | Deadline | Evidence of Completion | Source | Consequence if Stated |
+|---|---|---|---|---|---|---|
+| [Requirement] | [Owner] | [Trigger] | [Date] | [Evidence] | [Source] | [Consequence] |
+
+Do not:
+
+- Convert recommendations into obligations
+- Invent unstated deadlines
+- Invent penalties
+- Assume the agency owns a client obligation
+- Assume compliance simply because an action was initiated
+
+Where the governing document does not state a consequence:
+
+> No consequence stated in the supplied source.
+
+---
+
 # Governance / Conflict Prevention Standard
 
 **Use when actions can create duplicate, conflicting, exclusive, or irreversible effects.**
@@ -923,6 +1127,7 @@ Before execution, consider:
 - Existing approvals
 - Regulatory conflicts
 - System-of-record conflicts
+- Previously completed transactions
 
 Do not execute an action simply because it is individually valid if it creates a downstream workflow conflict.
 
@@ -947,6 +1152,7 @@ Potential owners:
 - Vendor
 - Regulator
 - Legal Counsel
+- Finance
 - AI Teammate
 - Other party
 
@@ -978,6 +1184,89 @@ Do not imply control over third parties.
 
 ---
 
+# Handoff Integrity Standard
+
+**Use whenever work moves from one person, team, AI Teammate, carrier, vendor, or system to another.**
+
+A handoff should define:
+
+1. Sending party
+2. Receiving party
+3. Work or information being transferred
+4. Current workflow state
+5. Required supporting information
+6. Requested next action
+7. Required timing
+8. Confirmation that ownership was accepted
+9. Follow-up owner if acknowledgment is not received
+
+Recommended structure:
+
+| From | To | Item / Work | Current State | Required Information | Requested Action | Timing | Confirmation |
+|---|---|---|---|---|---|---|---|
+| [Role] | [Role] | [Item] | [State] | [Information] | [Action] | [Timing] | [Method] |
+
+A handoff is **not complete merely because something was sent**.
+
+Where material, confirm:
+
+- Correct recipient
+- Complete information
+- Clear requested action
+- Current status
+- Follow-up ownership
+
+Avoid hidden work queues.
+
+---
+
+# System-of-Record Standard
+
+**Use whenever a workflow touches multiple systems.**
+
+Identify the authoritative system for each material record.
+
+Potential systems include:
+
+- AMS
+- CRM
+- Accounting platform
+- Claims system
+- HRIS
+- Benefits administration platform
+- Carrier portal
+- Document management system
+- Client portal
+
+For each material data element or transaction, define:
+
+1. System of record
+2. Systems that may read the data
+3. Systems that may update the data
+4. Required write-back
+5. Timing of synchronization
+6. Conflict-resolution rule
+7. Audit requirement
+
+Recommended structure:
+
+| Data / Transaction | System of Record | Other Systems | Write-Back Required | Conflict Rule |
+|---|---|---|---|---|
+| [Item] | [System] | [Systems] | Yes / No | [Rule] |
+
+Do not allow multiple systems to silently become competing sources of truth.
+
+When systems conflict:
+
+- Identify the discrepancy
+- Do not overwrite authoritative data without approval
+- Define which source controls
+- Log corrective action where material
+
+This standard is especially important for AI Teammates operating across multiple applications.
+
+---
+
 # Update Cadence Standard
 
 **Use for unresolved material workflows.**
@@ -990,10 +1279,72 @@ Examples:
 - No later than a specified date
 - After carrier review
 - Within an established service window
+- At a defined monitoring interval
 
 When completion timing is uncertain, provide a **next-update commitment**.
 
 Users should not need to chase the workflow for status.
+
+---
+
+# Dynamic Reassessment / Monitoring Trigger Standard
+
+**Use when the underlying risk, recommendation, severity, status, or readiness may materially change over time.**
+
+Identify specific developments that should trigger reassessment.
+
+Potential triggers include:
+
+- New claim information
+- Reserve increase
+- Surgery
+- Lawsuit
+- Attorney involvement
+- Carrier response
+- New exclusion
+- New location
+- Payroll change
+- Revenue change
+- Employee eligibility change
+- Regulatory change
+- Market change
+- Missed deadline
+- New contract
+- New loss
+- System exception
+- Material financial variance
+- Client decision change
+- New documentation
+
+Recommended structure:
+
+### Current Assessment
+
+[Current status / severity / recommendation]
+
+### Reassess When
+
+- [Trigger]
+- [Trigger]
+- [Trigger]
+
+### Reassessment Owner
+
+[Role]
+
+### Required Response
+
+[Action]
+
+Do not treat a prior assessment as permanently valid when the underlying conditions change.
+
+A Skill should distinguish:
+
+> Snapshot assessment
+
+from:
+
+> Ongoing monitored state.
 
 ---
 
@@ -1017,6 +1368,8 @@ Examples:
 - Material inconsistency remains unresolved
 - Deadline no longer permits the preferred strategy
 - Authorized limit of AI action has been reached
+- Workflow dependency failed
+- Governing authority cannot be established
 
 More activity is not automatically better.
 
@@ -1034,6 +1387,7 @@ Do not equate:
 - Requested
 - Sent
 - Reviewed
+- Routed
 
 with:
 
@@ -1050,6 +1404,7 @@ A policy-change workflow may not be complete until:
 3. Revised documentation is received
 4. Client receives confirmation
 5. Internal systems are updated
+6. Audit trail is complete
 
 Define completion from the intended outcome backward.
 
@@ -1077,8 +1432,10 @@ Potential triggers:
 - Unsupported or low-confidence conclusion
 - Client-sensitive communication
 - Irreversible action
+- Material financial posting
+- System-of-record conflict
 
-The AI may assist with analysis or drafting.
+The AI may assist with analysis, drafting, validation, or execution preparation.
 
 An authorized professional retains responsibility for the final decision or external action.
 
@@ -1133,6 +1490,8 @@ Potential audiences:
 - Producer
 - Employee
 - Regulator
+- Finance
+- Operations
 
 Adjust:
 
@@ -1201,6 +1560,8 @@ A strong output specification should identify:
 - Questions
 - Assumptions
 - Next actions
+- Owners
+- Status where operational
 
 Avoid leaving the output completely open-ended.
 
@@ -1215,10 +1576,15 @@ Example:
 | Priority | Finding | Evidence | Impact | Recommended Action |
 |---|---|---|---|---|
 
-or:
+Operational example:
 
 | Action | Owner | Due | Status |
 |---|---|---|---|
+
+Handoff example:
+
+| From | To | Item | Status | Next Action |
+|---|---|---|---|---|
 
 Do not force tables when narrative is more useful.
 
@@ -1247,16 +1613,22 @@ Every Skill should consider:
 - [ ] Required inputs are present
 - [ ] Important missing information is disclosed
 - [ ] Facts are distinguished from inference
+- [ ] Allegations are attributed where relevant
 - [ ] Current information is used when required
 - [ ] Governing authority is identified where relevant
 - [ ] Material data is internally consistent
 - [ ] Calculations are supportable
+- [ ] Transaction lineage is preserved where applicable
 - [ ] Comparisons are like-for-like where applicable
+- [ ] Obligations identify owner and deadline where applicable
 - [ ] Recommendations disclose trade-offs
 - [ ] Workflow state is accurate
 - [ ] Ownership is clear
 - [ ] Dependencies are identified
+- [ ] Handoffs are complete
+- [ ] System of record is identified where relevant
 - [ ] Timing is realistic
+- [ ] Monitoring triggers are defined where conditions may change
 - [ ] Completion criteria are defined when operational
 - [ ] Human escalation requirements are respected
 - [ ] Internal information is not leaked externally
@@ -1275,18 +1647,24 @@ Common failure conditions include:
 
 - Fabricating facts
 - Silent assumptions
+- Converting allegations into facts
 - Ignoring missing data
 - Using stale information as current
 - Ignoring governing authority
 - Confusing analysis with approval
 - Misleading calculations
+- Losing transaction lineage
 - Non-comparable comparisons
+- Failing to identify material obligations
 - Generic recommendations
 - Hidden trade-offs
 - Premature execution
+- Broken handoffs
+- Undefined system of record
 - Premature completion
 - Undefined ownership
 - Undefined next step
+- Failure to reassess after material change
 - Leaking internal strategy
 - Unsupported guarantees
 - Ignoring human-review requirements
@@ -1322,6 +1700,8 @@ Never invent:
 - Carrier requirements
 - Client facts
 - Regulatory requirements
+- Deadlines
+- Workflow actions
 
 ---
 
@@ -1332,6 +1712,28 @@ When assumptions materially affect the outcome:
 - Label them
 - Explain their basis
 - Identify what would confirm them
+
+---
+
+## Preserve Attribution
+
+Where facts are disputed or unverified:
+
+- Identify the source
+- Attribute the statement
+- Do not convert allegation into fact
+
+---
+
+## Preserve Transaction History
+
+Where transactions are modified:
+
+- Preserve original records
+- Preserve corrections
+- Preserve reversals
+- Preserve calculated transformations
+- Maintain traceability to source
 
 ---
 
@@ -1375,6 +1777,14 @@ Summaries and AI explanations do not replace:
 
 ---
 
+## Respect Systems of Record
+
+Do not silently overwrite authoritative information because another system contains a different value.
+
+Resolve conflicts through defined governance.
+
+---
+
 ## No Legal Advice
 
 Legal issues may be identified.
@@ -1413,7 +1823,9 @@ The authorized professional remains responsible for:
 - Binding
 - Cancellation
 - Compliance
+- Financial approval
 - Legal escalation
+- Workflow approval
 - Professional judgment
 
 ### Your people make the decisions. Your AI Teammates do the work.
@@ -1463,6 +1875,17 @@ The example should demonstrate:
 - Appropriate uncertainty
 - Guardrails
 
+Where applicable, also demonstrate:
+
+- Attribution
+- Ownership
+- Workflow state
+- Obligations
+- Handoffs
+- System of record
+- Monitoring trigger
+- Transaction lineage
+
 Examples must comply with the **Example Integrity Standard**.
 
 ---
@@ -1491,6 +1914,11 @@ Potential additions include:
 - Materiality
 - Execution readiness
 - Governance
+- Ownership
+- Handoffs
+- System of record
+- Monitoring
+- Transaction lineage
 - Output standards
 - Quality controls
 - Guardrails
@@ -1577,6 +2005,7 @@ Our goal is to give insurance professionals more capacity for:
 - Risk advisory
 - Analysis
 - Communication
+- Operations
 - Growth
 
 while AI handles more of the repetitive work surrounding those responsibilities.
